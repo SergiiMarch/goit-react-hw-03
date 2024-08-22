@@ -6,7 +6,7 @@ import SearchBox from "./components/SearchBox/SearchBox";
 
 function App() {
   const [contacts, setContacs] = useState(contactArr);
-  const [filter, setFilter] = useState(" ");
+  const [filter, setFilter] = useState("");
   const visibleTasks = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
