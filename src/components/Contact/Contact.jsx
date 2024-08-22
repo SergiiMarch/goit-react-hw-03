@@ -1,10 +1,11 @@
+import style from "./Contact.module.css";
+
 export default function Contact({ value }) {
-  console.log(value);
   return (
-    <div>
-      <h2>{value.name}</h2>
-      <p>{value.number}</p>
-      <button>Delete</button>
+    <div className={style.container}>
+      <h2 className={style.name}>{value.name}</h2>
+      <p className={style.number}>{value.number}</p>
+      <button className={style.buttonDelete}>Delete</button>
     </div>
   );
 }
