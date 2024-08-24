@@ -6,7 +6,18 @@ import SearchBox from "./components/SearchBox/SearchBox";
 import ContactForm from "./components/ContactForm/ContactForm";
 
 function App() {
-  const [contacts, setContacs] = useState(contactArr);
+  const [contacts, setContacts] = useState(contactArr);
+
+  const addUser = (newUser) => {
+    setContacts([...contacts, newUser]);
+  };
+
+  const deleteContact = (id) => {
+    setContacts((prevContacts) =>
+      prevContacts.filter((contact) => contact.id !== id)
+    );
+  };
+
   const [filter, setFilter] = useState("");
   const visibleTasks = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -15,9 +26,9 @@ function App() {
   return (
     <>
       <h1>PhoneBook</h1>
-      <ContactForm />
+      <ContactForm onSubmit={addUser} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList values={visibleTasks} />
+      <ContactList values={visibleTasks} onDelete={deleteContact} />
     </>
   );
 }
